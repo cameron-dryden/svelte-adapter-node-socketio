@@ -1,0 +1,64 @@
+{
+  "name": "@cameron-dryden/svelte-adapter-node-socketio",
+  "version": "0.0.1",
+  "description": "Adapter for SvelteKit apps that generates a standalone Node server with a SocketIO server",
+  "keywords": [
+    "adapter",
+    "deploy",
+    "hosting",
+    "node.js",
+    "socketio",
+    "svelte",
+    "sveltekit"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cameron-dryden/svelte-adapter-node-socketio.git"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/cameron-dryden/svelte-adapter-node-socketio#README",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "index.d.ts",
+  "files": [
+    "files",
+    "index.js",
+    "index.d.ts",
+    "ambient.d.ts"
+  ],
+  "scripts": {
+    "dev": "rollup -cw",
+    "build": "rollup -c",
+    "test": "vitest run",
+    "check": "tsc",
+    "lint": "prettier --check .",
+    "format": "npm lint --write",
+    "prepublishOnly": "npm build"
+  },
+  "devDependencies": {
+    "@polka/url": "^1.0.0-next.28",
+    "@sveltejs/kit": "^2.27.3",
+    "@sveltejs/vite-plugin-svelte": "^6.0.0-next.3",
+    "@types/node": "^24.6.2",
+    "polka": "^1.0.0-next.28",
+    "socket.io": "^4.8.1",
+    "sirv": "^3.0.0",
+    "typescript": "^5.3.3",
+    "vitest": "^3.2.3"
+  },
+  "dependencies": {
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "rollup": "^4.9.5"
+  },
+  "peerDependencies": {
+    "@sveltejs/kit": "^2.4.0"
+  }
+}
