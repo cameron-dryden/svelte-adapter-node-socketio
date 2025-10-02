@@ -1,6 +1,6 @@
 {
   "name": "svelte-adapter-node-socketio",
-  "version": "0.0.16",
+  "version": "1.0.0",
   "description": "Adapter for SvelteKit apps that generates a standalone Node server with a SocketIO server",
   "keywords": [
     "adapter",
