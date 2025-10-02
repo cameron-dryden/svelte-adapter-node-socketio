@@ -38,8 +38,8 @@
     "test": "vitest run",
     "check": "tsc",
     "lint": "prettier --check .",
-    "format": "npm lint --write",
-    "prepublishOnly": "npm build"
+    "format": "npm run lint --write",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@polka/url": "^1.0.0-next.28",
