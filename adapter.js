@@ -18,12 +18,12 @@ import json from "@rollup/plugin-json";
 
 const files = fileURLToPath(new URL("./files", import.meta.url).href);
 
-/** @type {import('./index.js').default} */
+/** @type {import('./adapter.js').default} */
 export default function (opts = {}) {
   const { out = "build", precompress = true, envPrefix = "" } = opts;
 
   return {
-    name: "@sveltejs/adapter-node",
+    name: "adapter-node-socketio",
     /** @param {Builder2_4_0} builder */
     async adapt(builder) {
       const tmp = builder.getBuildDirectory("adapter-node-socketio");

@@ -1,6 +1,6 @@
 {
-  "name": "@cameron-dryden/svelte-adapter-node-socketio",
-  "version": "0.0.1",
+  "name": "svelte-adapter-node-socketio",
+  "version": "0.0.16",
   "description": "Adapter for SvelteKit apps that generates a standalone Node server with a SocketIO server",
   "keywords": [
     "adapter",
@@ -19,17 +19,32 @@
   "homepage": "https://github.com/cameron-dryden/svelte-adapter-node-socketio#README",
   "type": "module",
   "exports": {
-    ".": {
-      "types": "./index.d.ts",
-      "import": "./index.js"
+    "./adapter": {
+      "types": "./adapter.d.ts",
+      "import": "./adapter.js"
+    },
+    "./plugin": {
+      "types": "./plugin.d.ts",
+      "import": "./plugin.js"
     },
     "./package.json": "./package.json"
   },
-  "types": "index.d.ts",
+  "typesVersions": {
+    "*": {
+      "adapter": [
+        "adapter.d.ts"
+      ],
+      "plugin": [
+        "plugin.d.ts"
+      ]
+    }
+  },
   "files": [
     "files",
-    "index.js",
-    "index.d.ts",
+    "adapter.js",
+    "adapter.d.ts",
+    "plugin.js",
+    "plugin.d.ts",
     "ambient.d.ts"
   ],
   "scripts": {
@@ -43,14 +58,14 @@
   },
   "devDependencies": {
     "@polka/url": "^1.0.0-next.28",
-    "@sveltejs/kit": "^2.27.3",
     "@sveltejs/vite-plugin-svelte": "^6.0.0-next.3",
-    "@types/node": "^24.6.2",
+    "@types/node": "^18.19.119",
     "polka": "^1.0.0-next.28",
     "socket.io": "^4.8.1",
-    "sirv": "^3.0.0",
+    "sirv": "^3.0.2",
     "typescript": "^5.3.3",
-    "vitest": "^3.2.3"
+    "vitest": "^3.2.4",
+    "@sveltejs/kit": "^2.38.0"
   },
   "dependencies": {
     "@rollup/plugin-commonjs": "^28.0.1",
