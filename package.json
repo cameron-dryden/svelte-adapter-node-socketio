@@ -1,6 +1,6 @@
 {
   "name": "svelte-adapter-node-socketio",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Adapter for SvelteKit apps that generates a standalone Node server with a SocketIO server",
   "keywords": [
     "adapter",
@@ -19,32 +19,28 @@
   "homepage": "https://github.com/cameron-dryden/svelte-adapter-node-socketio#README",
   "type": "module",
   "exports": {
-    "./adapter": {
-      "types": "./adapter.d.ts",
-      "import": "./adapter.js"
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
     },
     "./plugin": {
       "types": "./plugin.d.ts",
       "import": "./plugin.js"
     },
+    "./adapter": {
+      "types": "./adapter.d.ts",
+      "import": "./adapter.js"
+    },
     "./package.json": "./package.json"
-  },
-  "typesVersions": {
-    "*": {
-      "adapter": [
-        "adapter.d.ts"
-      ],
-      "plugin": [
-        "plugin.d.ts"
-      ]
-    }
   },
   "files": [
     "files",
-    "adapter.js",
-    "adapter.d.ts",
+    "index.js",
+    "index.d.ts",
     "plugin.js",
     "plugin.d.ts",
+    "adapter.js",
+    "adapter.d.ts",
     "ambient.d.ts"
   ],
   "scripts": {

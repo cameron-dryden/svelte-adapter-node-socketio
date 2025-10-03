@@ -113,6 +113,7 @@ export default function (opts = {}) {
           HANDLER: "./handler.js",
           MANIFEST: "./server/manifest.js",
           SERVER: "./server/index.js",
+          SOCKETIO: "./socketio.js",
           SHIMS: "./shims.js",
           ENV_PREFIX: JSON.stringify(envPrefix),
         },

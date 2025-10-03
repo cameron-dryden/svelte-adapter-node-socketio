@@ -1,3 +1,4 @@
+import { socketIOReady } from "SOCKETIO";
 import process from "node:process";
 import { handler } from "HANDLER";
 import { env } from "ENV";
@@ -47,7 +48,8 @@ if (socket_activation) {
 }
 
 // @ts-ignore
-global.io = new Server(server.server);
+global.socketio.io = new Server(server.server);
+socketIOReady();
 
 /** @param {'SIGINT' | 'SIGTERM' | 'IDLE'} reason */
 function graceful_shutdown(reason) {

@@ -6,10 +6,13 @@ export default function () {
     name: "socket.io plugin",
     /** @param {import('vite').ViteDevServer} server */
     configureServer(server) {
-      // @ts-ignore
-      if (global.io) return;
-      // @ts-ignore
-      global.io = new Server(server.httpServer);
+      if (global.socketio) return;
+
+      global.socketio = {
+        ready: () => Promise.resolve(global.socketio.io),
+        // @ts-ignore
+        io: new Server(server.httpServer),
+      };
     },
   };
 }

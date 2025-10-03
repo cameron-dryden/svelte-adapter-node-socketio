@@ -37,35 +37,43 @@ const config: UserConfig = {
 export default config;
 ```
 
-Now you have a Socket.IO server that runs with the SvelteKit app. You can access the Socket.IO server by using the `global.io` variable which will be set once the server is listening.
+Now you have a Socket.IO server that runs with the SvelteKit app. You can access the Socket.IO server by using the `ready()` function which is a promise that will return the Socket.IO Server instance when it has been initialized. You can also access the Socket.IO server by using the `global.socketio.io` variable which will be set once the server is initialized.
 
 #### `hooks.server.ts`
 
 ```javascript
-import type { ServerInit } from "@sveltejs/kit";
+import type { ServerInit } from '@sveltejs/kit';
+import { ready } from "svelte-adapter-node-socketio";
+import type { ClientToServerEvents, InterServerEvents, ServerToClientEvents, SocketData } from "./types";
+
 
 export const init: ServerInit = async () => {
-  // TODO: Figure out better way to do this (when server is listening, this needs to run)
-  setTimeout(() => {
-    if (global.io) {
-      console.log("Socket.IO initialized");
+    ready<
+        ClientToServerEvents,
+        ServerToClientEvents,
+        InterServerEvents,
+        SocketData
+    >().then(io => {
+        io.on("connection", (socket) => {
+            socket.on("name", async (name) => {
+                socket.data.name = name;
 
-      global.io.on("connection", (socket) => {
-        socket.on("message", (message) => {
-          global.io.emit("message", { ...message, bot: false });
-        });
+                io.emit("message", {
+                    author: "",
+                    text: `👋 ${name} has entered the chat`,
+                    bot: true,
+                });
+            });
 
-        socket.on("disconnect", () => {
-          global.io.emit("message", {
-            author: "",
-            text: `🏃‍♀️ ${socket.data.name} has left the chat`,
-            bot: true,
-          });
-        });
-      });
-    } else {
-      console.log("Socket.IO not initialized");
-    }
-  }, 1000);
+            socket.on("disconnect", () => {
+                io.emit("message", {
+                    author: "",
+                    text: `🏃‍♀️ ${socket.data.name} has left the chat`,
+                    bot: true,
+                });
+            });
+        })
+    })
 };
+
 ```
